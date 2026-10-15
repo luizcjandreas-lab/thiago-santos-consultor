@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Thiago Santos | Consultor de Vendas de Veículos em São Paulo</title>
+    <meta
+      name="description"
+      content="Encontre seu próximo veículo com atendimento personalizado. Fale com Thiago Santos, gerente de vendas com 8 anos de experiência em São Paulo e Grande São Paulo."
+    />
+    <meta name="theme-color" content="#070708" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Thiago dos Santos Souza" />
+    <link rel="canonical" href="%VITE_SITE_URL%/" />
+
+    <!-- Open Graph / redes sociais -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Thiago Santos — Consultor de Vendas" />
+    <meta property="og:title" content="Thiago Santos | Consultor de Vendas de Veículos em São Paulo" />
+    <meta
+      property="og:description"
+      content="Atendimento personalizado para encontrar seu próximo veículo em São Paulo e Grande São Paulo. Gerente de vendas com 8 anos de experiência."
+    />
+    <meta property="og:url" content="%VITE_SITE_URL%/" />
+    <meta property="og:image" content="%VITE_SITE_URL%/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Thiago Santos, consultor de vendas, no showroom" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Thiago Santos | Consultor de Vendas de Veículos em São Paulo" />
+    <meta name="twitter:image" content="%VITE_SITE_URL%/og-image.jpg" />
+
+    <!-- Ícones -->
+    <link rel="icon" href="./favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./brand/favicon-32.png" />
+    <link rel="apple-touch-icon" href="./brand/apple-touch-icon.png" />
+    <link rel="manifest" href="./site.webmanifest" />
+
+    <!-- Fonte: Archivo (eixos de largura e peso) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap"
+    />
+
+    <!-- Pré-carrega a logo da abertura e a foto principal -->
+    <link rel="preload" as="image" href="./brand/logo-thiago.webp" />
+    <link
+      rel="preload"
+      as="image"
+      href="./media/thiago-hero-960.webp"
+      imagesrcset="./media/thiago-hero-640.webp 640w, ./media/thiago-hero-960.webp 960w, ./media/thiago-hero-1200.webp 1200w"
+      imagesizes="(min-width: 1024px) 47vw, 100vw"
+    />
+
+    <!--
+      Google Analytics 4 e Meta Pixel: não cole os scripts aqui.
+      Defina VITE_GA_ID e VITE_META_PIXEL_ID no arquivo .env.
+      Eles são carregados por src/lib/analytics.ts somente após o consentimento.
+    -->
+  </head>
+  <body>
+    <noscript>
+      <div style="padding: 24px; font-family: sans-serif; color: #f4f3f0; background: #070708">
+        Para ver os veículos e falar com o Thiago, ative o JavaScript ou chame no WhatsApp:
+        <a style="color: #e1ba66" href="https://wa.me/5511978127789">(11) 97812-7789</a>
+      </div>
+    </noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

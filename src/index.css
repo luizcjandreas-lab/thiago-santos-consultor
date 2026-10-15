@@ -1,0 +1,204 @@
+@import "tailwindcss";
+
+/*
+  Direção visual: showroom à noite. Fundo de asfalto, superfícies grafite,
+  linhas de aço e o dourado da logomarca reservado para ação e para a
+  "faixa de rodagem" (linha tracejada), o elemento gráfico do site.
+  Tipografia: Archivo, usando o eixo de largura: expandida nos títulos
+  (como emblemas automotivos) e condensada nos dados técnicos.
+
+  As cores abaixo são os valores padrão. O arquivo src/config/site.ts
+  (THEME_COLORS) sobrescreve essas variáveis quando o site carrega.
+*/
+
+@theme {
+  --font-sans: "Archivo", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --color-asfalto: #070708;
+  --color-grafite: #0f1013;
+  --color-chumbo: #17191d;
+  --color-aco: #2a2d33;
+  --color-aco-claro: #3d4148;
+  --color-cimento: #9ea1a6;
+  --color-nevoa: #c9cbce;
+  --color-branco: #f4f3f0;
+  --color-ouro: #e1ba66;
+  --color-ouro-escuro: #b8934b;
+  --color-ouro-claro: #edd29a;
+  --color-ok: #6cc08b;
+  --color-reserva: #e0995a;
+  --color-erro: #ef8a80;
+
+  --ease-pista: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Larguras da Archivo (eixo wdth) */
+@utility font-wide {
+  font-stretch: 112%;
+}
+@utility font-wider {
+  font-stretch: 122%;
+}
+@utility font-narrow {
+  font-stretch: 82%;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-padding-top: 5.5rem;
+    scroll-padding-bottom: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  body {
+    background-color: var(--color-asfalto);
+    color: var(--color-branco);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--color-ouro);
+    color: var(--color-asfalto);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-ouro);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  img,
+  video {
+    max-width: 100%;
+  }
+  [hidden] {
+    display: none !important;
+  }
+}
+
+@layer components {
+  /* Largura padrão das seções, com margem lateral segura em celulares com recorte */
+  .container-site {
+    width: 100%;
+    max-width: 78rem;
+    margin-inline: auto;
+    padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+  }
+  @media (width >= 48rem) {
+    .container-site {
+      padding-left: max(2rem, env(safe-area-inset-left, 0px));
+      padding-right: max(2rem, env(safe-area-inset-right, 0px));
+    }
+  }
+
+  .section-y {
+    padding-block: 5rem;
+  }
+  @media (width >= 64rem) {
+    .section-y {
+      padding-block: 7.5rem;
+    }
+  }
+
+  /* Faixa de rodagem: linha tracejada dourada */
+  .lane-x {
+    background-image: linear-gradient(90deg, var(--color-ouro) 0 58%, transparent 58% 100%);
+    background-size: 28px 2px;
+    background-repeat: repeat-x;
+    background-position: left center;
+    height: 2px;
+  }
+  .lane-y {
+    background-image: linear-gradient(180deg, var(--color-ouro) 0 58%, transparent 58% 100%);
+    background-size: 2px 16px;
+    background-repeat: repeat-y;
+    width: 2px;
+  }
+
+  /* Campos de formulário */
+  .field-input {
+    width: 100%;
+    min-height: 3rem;
+    border-radius: 10px;
+    border: 1px solid var(--color-aco);
+    background-color: var(--color-chumbo);
+    color: var(--color-branco);
+    padding: 0.75rem 0.95rem;
+    font-size: 1rem;
+    line-height: 1.4;
+    transition: border-color 0.2s, background-color 0.2s;
+  }
+  .field-input::placeholder {
+    color: color-mix(in srgb, var(--color-cimento) 75%, transparent);
+  }
+  .field-input:hover {
+    border-color: var(--color-aco-claro);
+  }
+  .field-input:focus {
+    outline: none;
+    border-color: var(--color-ouro);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-ouro) 22%, transparent);
+  }
+  .field-input[aria-invalid='true'] {
+    border-color: var(--color-erro);
+  }
+  select.field-input {
+    appearance: none;
+    padding-right: 2.5rem;
+    cursor: pointer;
+  }
+  select.field-input option {
+    background: var(--color-chumbo);
+    color: var(--color-branco);
+  }
+  textarea.field-input {
+    min-height: 6.5rem;
+    resize: vertical;
+  }
+
+  /* Campo pendente de preenchimento (ex.: "[ENDEREÇO]") */
+  .pending {
+    color: var(--color-cimento);
+    text-decoration: underline dashed color-mix(in srgb, var(--color-cimento) 60%, transparent);
+    text-underline-offset: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes lane-run {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 16px;
+  }
+}
+.animate-lane {
+  animation: lane-run 0.9s linear infinite;
+}
