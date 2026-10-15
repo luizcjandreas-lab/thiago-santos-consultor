@@ -108,24 +108,22 @@ export const VEHICLES: Vehicle[] = [
     features: ['Completo', 'Central multimídia'],
     notes: 'IPVA 2026 pago.',
   },
-
-  /* ------------------------------------------------------------------------
-     RASCUNHOS (hidden: true): fotos já salvas, aguardando os dados do anúncio.
-     Preencha versão, ano, preço etc. e apague a linha "hidden: true" para publicar.
-     ------------------------------------------------------------------------ */
   {
     id: 'hb20s-1-0',
-    hidden: true,
     brand: 'Hyundai',
     model: 'HB20S',
-    version: '1.0', // completar a versão
-    yearModel: 0, // preencher
-    transmission: 'Automático', // confirmar
+    version: '1.0 TGDI Comfort Plus',
+    yearModel: 2025,
+    // km: preencher quando souber
+    transmission: 'Automático',
     fuel: 'Flex',
-    price: null,
+    price: 86900,
     color: 'Branco',
     bodyType: 'sedan',
+    // storeId: 'loja-1',
     status: 'disponivel',
+    engine: '1.0 turbo',
+    doors: 4,
     images: [
       'estoque/hb20s-1-0/1.webp',
       'estoque/hb20s-1-0/2.webp',
@@ -140,21 +138,25 @@ export const VEHICLES: Vehicle[] = [
       'estoque/hb20s-1-0/11.webp',
       'estoque/hb20s-1-0/12.webp',
     ],
-    features: [],
+    features: ['Completo', 'Central multimídia'],
+    notes: 'IPVA 2026 pago.',
   },
   {
     id: 'hyundai-creta',
-    hidden: true,
     brand: 'Hyundai',
     model: 'Creta',
-    version: '', // completar a versão
-    yearModel: 0, // preencher
-    transmission: 'Automático', // confirmar
+    version: '1.6 Action',
+    yearModel: 2019,
+    // km: preencher quando souber
+    transmission: 'Automático',
     fuel: 'Flex',
-    price: null,
+    price: 87900,
     color: 'Branco',
     bodyType: 'suv',
+    // storeId: 'loja-1',
     status: 'disponivel',
+    engine: '1.6',
+    doors: 4,
     images: [
       'estoque/hyundai-creta/1.webp',
       'estoque/hyundai-creta/2.webp',
@@ -168,8 +170,14 @@ export const VEHICLES: Vehicle[] = [
       'estoque/hyundai-creta/10.webp',
       'estoque/hyundai-creta/11.webp',
     ],
-    features: [],
+    features: ['Completo', 'Central multimídia'],
+    notes: 'IPVA 2026 pago.',
   },
+
+  /* ------------------------------------------------------------------------
+     RASCUNHOS (hidden: true): fotos já salvas, aguardando os dados do anúncio.
+     Preencha versão, ano, preço etc. e apague a linha "hidden: true" para publicar.
+     ------------------------------------------------------------------------ */
   {
     id: 't-cross-1-4',
     hidden: true,
