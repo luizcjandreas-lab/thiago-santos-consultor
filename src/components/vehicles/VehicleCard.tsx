@@ -104,10 +104,12 @@ export function VehicleCard({ vehicle: v, onOpen }: Props) {
               {sold ? 'Vendido' : formatPrice(v.price)}
             </p>
           </div>
-          <p className="flex min-w-0 items-center gap-1.5 text-right text-[0.82rem] text-cimento">
-            <MapPin size={14} strokeWidth={1.8} aria-hidden="true" className="shrink-0" />
-            <span className="truncate">{storeLabel(store)}</span>
-          </p>
+          {store && (
+            <p className="flex min-w-0 items-center gap-1.5 text-right text-[0.82rem] text-cimento">
+              <MapPin size={14} strokeWidth={1.8} aria-hidden="true" className="shrink-0" />
+              <span className="truncate">{storeLabel(store)}</span>
+            </p>
+          )}
         </div>
 
         <div className="mt-auto grid grid-cols-2 gap-2.5">

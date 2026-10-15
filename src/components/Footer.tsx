@@ -1,5 +1,5 @@
 import { MessageCircle } from 'lucide-react';
-import { VEHICLES } from '../config/estoque';
+import { STOCK } from '../config/estoque';
 import { BRAND, CONTACT, LEGAL, LINKS, PARTNER_STORE, PROFILE, STORES } from '../config/site';
 import { track } from '../lib/analytics';
 import { asset, cx, isFilled, storeLabel } from '../lib/utils';
@@ -102,7 +102,7 @@ export function Footer() {
           <div className="flex max-w-[46rem] flex-col gap-1.5">
             <p>{LEGAL.priceNotice}</p>
             <p>{LEGAL.financingNotice}</p>
-            {VEHICLES.some((v) => v.demo) && <p>Veículos marcados como “Exemplo” são ilustrativos e não fazem parte do estoque.</p>}
+            {STOCK.some((v) => v.demo) && <p>Veículos marcados como “Exemplo” são ilustrativos e não fazem parte do estoque.</p>}
           </div>
           <div className="flex shrink-0 flex-col gap-1.5 lg:items-end">
             <a href="#privacidade" className="text-nevoa underline-offset-4 hover:text-ouro-claro hover:underline">

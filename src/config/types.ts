@@ -9,15 +9,18 @@ export type Fuel = 'Flex' | 'Gasolina' | 'Diesel' | 'Híbrido' | 'Elétrico';
 export interface Vehicle {
   /** Identificador único, sem espaços. Ex.: "polo-highline-2023" */
   id: string;
-  /** true = veículo de demonstração (aparece com a etiqueta "Exemplo"). Remova ao cadastrar o estoque real. */
+  /** true = veículo de demonstração (aparece com a etiqueta "Exemplo"). */
   demo?: boolean;
+  /** true = rascunho: fica salvo no arquivo, mas não aparece no site */
+  hidden?: boolean;
   brand: string;
   model: string;
   version: string;
   /** Ano de fabricação (opcional) e ano do modelo */
   yearMake?: number;
   yearModel: number;
-  km: number;
+  /** Quilometragem. Deixe de fora para exibir "Consulte". */
+  km?: number;
   transmission: Transmission;
   fuel: Fuel;
   /** Preço em reais. Use null para exibir "Consulte". */
@@ -25,8 +28,8 @@ export interface Vehicle {
   color: string;
   /** Usado para a ilustração quando o veículo ainda não tem fotos */
   bodyType: BodyType;
-  /** Deve corresponder ao "id" de uma loja em STORES (site.ts) */
-  storeId: string;
+  /** "id" de uma loja em STORES (site.ts). Deixe de fora se ainda não souber a unidade. */
+  storeId?: string;
   status: VehicleStatus;
   /** Caminhos das fotos dentro de /public. A primeira é a foto principal. Ex.: "estoque/polo-2023/1.webp" */
   images: string[];

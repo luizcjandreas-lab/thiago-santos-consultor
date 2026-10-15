@@ -83,7 +83,7 @@ export function applyFilters(vehicles: Vehicle[], f: Filters, sort: SortKey): Ve
       case 'mais-novos':
         return b.yearModel - a.yearModel;
       case 'menor-km':
-        return a.km - b.km;
+        return (a.km ?? Number.POSITIVE_INFINITY) - (b.km ?? Number.POSITIVE_INFINITY);
       default:
         return STATUS_ORDER[a.status] - STATUS_ORDER[b.status] || b.yearModel - a.yearModel;
     }

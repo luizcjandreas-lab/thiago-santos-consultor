@@ -32,7 +32,7 @@ function DetailsContent({ v, onClose }: { v: Vehicle; onClose: () => void }) {
     ['Modelo', v.model],
     ['Versão', v.version],
     ['Ano', formatYear(v)],
-    ['Quilometragem', formatKm(v.km)],
+    ['Quilometragem', v.km != null ? formatKm(v.km) : undefined],
     ['Câmbio', v.transmission],
     ['Combustível', v.fuel],
     ['Cor', v.color],
@@ -69,7 +69,7 @@ function DetailsContent({ v, onClose }: { v: Vehicle; onClose: () => void }) {
                 {v.model} <span className="font-semibold text-nevoa">{v.version}</span>
               </h2>
               <p className="mt-2 text-[0.95rem] tabular-nums text-cimento">
-                {formatYear(v)} • {formatKm(v.km)} • {v.transmission}
+                {[formatYear(v), v.km != null ? formatKm(v.km) : null, v.transmission, v.fuel].filter(Boolean).join(' • ')}
               </p>
               <p
                 className={cx(
@@ -129,17 +129,16 @@ function DetailsContent({ v, onClose }: { v: Vehicle; onClose: () => void }) {
               </section>
             )}
 
+            {store && (
             <section aria-labelledby="det-unidade" className="rounded-[12px] border border-aco p-5">
               <h3 id="det-unidade" className="flex items-center gap-2 font-wide text-[1.05rem] font-semibold text-branco">
                 <MapPin size={18} strokeWidth={1.8} aria-hidden="true" className="text-ouro" />
                 Onde o veículo está
               </h3>
               <p className="mt-2 text-[0.95rem] text-branco">{storeLabel(store)}</p>
-              <p className={cx('mt-1 text-[0.9rem]', isFilled(store?.address) ? 'text-nevoa' : 'pending')}>
-                {store?.address ?? '[ENDEREÇO]'}
-              </p>
+              {isFilled(store.address) && <p className="mt-1 text-[0.9rem] text-nevoa">{store.address}</p>}
               <div className="mt-4">
-                {store && isFilled(store.mapsUrl) ? (
+                {isFilled(store.mapsUrl) ? (
                   <ButtonLink
                     href={store.mapsUrl}
                     variant="secondary"
@@ -156,6 +155,7 @@ function DetailsContent({ v, onClose }: { v: Vehicle; onClose: () => void }) {
                 )}
               </div>
             </section>
+            )}
 
             <section aria-labelledby="det-condicoes-m" className="rounded-[12px] border border-aco p-5 lg:hidden">
               <Conditions id="det-condicoes-m" />

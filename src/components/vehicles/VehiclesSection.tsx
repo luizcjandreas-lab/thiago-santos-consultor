@@ -1,6 +1,6 @@
 import { CarFront, Info, MessageCircle, RotateCcw, Search, SlidersHorizontal } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import { VEHICLES } from '../../config/estoque';
+import { STOCK } from '../../config/estoque';
 import type { Vehicle } from '../../config/types';
 import { track } from '../../lib/analytics';
 import { cx } from '../../lib/utils';
@@ -19,17 +19,17 @@ export function VehiclesSection() {
   const [selected, setSelected] = useState<Vehicle | null>(null);
   const [detailsOpen, setDetailsOpen] = useState(false);
 
-  const options = useMemo(() => filterOptions(VEHICLES, filters), [filters]);
-  const results = useMemo(() => applyFilters(VEHICLES, filters, sort), [filters, sort]);
+  const options = useMemo(() => filterOptions(STOCK, filters), [filters]);
+  const results = useMemo(() => applyFilters(STOCK, filters, sort), [filters, sort]);
   const activeCount = Object.values(filters).filter(Boolean).length;
-  const hasDemo = VEHICLES.some((v) => v.demo);
+  const hasDemo = STOCK.some((v) => v.demo);
   const availableCount = results.filter((v) => v.status === 'disponivel').length;
 
   const update = (key: keyof Filters, value: string) => {
     setFilters((prev) => {
       const next = { ...prev, [key]: value };
       // Ao trocar a marca, o modelo selecionado pode deixar de existir
-      if (key === 'brand' && value && prev.model && !VEHICLES.some((v) => v.brand === value && v.model === prev.model)) {
+      if (key === 'brand' && value && prev.model && !STOCK.some((v) => v.brand === value && v.model === prev.model)) {
         next.model = '';
       }
       return next;
@@ -63,7 +63,7 @@ export function VehiclesSection() {
           </p>
         )}
 
-        {VEHICLES.length === 0 ? (
+        {STOCK.length === 0 ? (
           <EmptyStock />
         ) : (
           <>

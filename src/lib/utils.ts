@@ -32,7 +32,7 @@ const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: '
 const integer = new Intl.NumberFormat('pt-BR');
 
 export const formatPrice = (price: number | null) => (price == null ? 'Consulte' : currency.format(price));
-export const formatKm = (km: number) => `${integer.format(km)} km`;
+export const formatKm = (km?: number) => (km == null ? 'Consulte' : `${integer.format(km)} km`);
 export const formatYear = (v: Pick<Vehicle, 'yearMake' | 'yearModel'>) =>
   v.yearMake && v.yearMake !== v.yearModel ? `${v.yearMake}/${v.yearModel}` : String(v.yearModel);
 
@@ -44,7 +44,8 @@ export const STATUS_LABEL: Record<VehicleStatus, string> = {
   vendido: 'Vendido',
 };
 
-export function findStore(id: string): Store | undefined {
+export function findStore(id?: string): Store | undefined {
+  if (!id) return undefined;
   return STORES.find((s) => s.id === id);
 }
 
