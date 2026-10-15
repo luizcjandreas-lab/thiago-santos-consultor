@@ -174,23 +174,22 @@ export const VEHICLES: Vehicle[] = [
     notes: 'IPVA 2026 pago.',
   },
 
-  /* ------------------------------------------------------------------------
-     RASCUNHOS (hidden: true): fotos já salvas, aguardando os dados do anúncio.
-     Preencha versão, ano, preço etc. e apague a linha "hidden: true" para publicar.
-     ------------------------------------------------------------------------ */
   {
     id: 't-cross-1-4',
-    hidden: true,
     brand: 'Volkswagen',
     model: 'T-Cross',
-    version: '1.4 TSI', // completar a versão
-    yearModel: 0, // preencher
-    transmission: 'Automático', // confirmar
+    version: '1.4 TSI 250 Highline',
+    yearModel: 2021,
+    // km: preencher quando souber
+    transmission: 'Automático',
     fuel: 'Flex',
-    price: null,
+    price: 106900,
     color: 'Preto',
     bodyType: 'suv',
+    // storeId: 'loja-1',
     status: 'disponivel',
+    engine: '1.4 TSI',
+    doors: 4,
     images: [
       'estoque/t-cross-1-4/1.webp',
       'estoque/t-cross-1-4/2.webp',
@@ -205,7 +204,8 @@ export const VEHICLES: Vehicle[] = [
       'estoque/t-cross-1-4/11.webp',
       'estoque/t-cross-1-4/12.webp',
     ],
-    features: [],
+    features: ['Completo', 'Painel digital', 'Central multimídia'],
+    notes: 'IPVA 2026 pago.',
   },
 ];
 
