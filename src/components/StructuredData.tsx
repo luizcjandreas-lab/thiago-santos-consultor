@@ -53,7 +53,7 @@ export function StructuredData() {
               name: isFilled(s.name) ? s.name : `${PARTNER_STORE.name} — ${storeLabel(s)}`,
               address: s.address,
               telephone: isFilled(s.phone) ? s.phone : undefined,
-              openingHours: isFilled(s.hours) ? s.hours : undefined,
+              openingHours: s.openingHours?.length ? s.openingHours : undefined,
               hasMap: isFilled(s.mapsUrl) ? s.mapsUrl : undefined,
             }))
           : undefined,

@@ -41,6 +41,8 @@ export interface Store {
   name: string;
   address: string;
   hours: string;
+  /** Horário no formato schema.org, ex.: ['Mo-Fr 09:00-18:00', 'Sa 09:00-13:00'] */
+  openingHours?: string[];
   phone: string;
   /** Link do Google Maps (botão "Como chegar") */
   mapsUrl: string;

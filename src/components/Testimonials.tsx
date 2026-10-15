@@ -20,34 +20,60 @@ export function Testimonials() {
           title="Negociações construídas com confiança"
           description={items.length ? 'Relatos de clientes atendidos pelo Thiago, publicados com autorização.' : undefined}
         />
-        {items.length ? <Carousel items={items} /> : <EmptyState />}
+        {items.length > 0 && <Carousel items={items} />}
+        <GoogleReviews compact={items.length > 0} />
       </div>
     </section>
   );
 }
 
-/** Exibido enquanto não houver depoimentos reais cadastrados em site.ts */
-function EmptyState() {
+/**
+ * Avaliações dos clientes no Google (links em LINKS, site.ts).
+ * Depoimentos cadastrados em TESTIMONIALS aparecem acima, no carrossel.
+ */
+function GoogleReviews({ compact }: { compact: boolean }) {
   return (
-    <div className="mt-12 flex flex-col gap-7 rounded-[16px] border border-dashed border-aco-claro p-7 sm:p-10 lg:mt-16 lg:flex-row lg:items-center lg:justify-between">
+    <div
+      className={cx(
+        'flex flex-col gap-7 rounded-[16px] border border-aco bg-asfalto p-7 sm:p-10 lg:flex-row lg:items-center lg:justify-between',
+        compact ? 'mt-8' : 'mt-12 lg:mt-16',
+      )}
+    >
       <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:gap-6">
-      <Quote size={36} strokeWidth={1.4} aria-hidden="true" className="shrink-0 text-ouro" />
-      <div>
-        <p className="font-wide text-[1.3rem] font-semibold leading-snug text-branco">Depoimentos de clientes em breve</p>
-        <p className="mt-2 max-w-xl leading-relaxed text-nevoa">
-          Os relatos e as fotos de entregas serão publicados aqui, sempre com autorização de cada cliente. Enquanto isso, acompanhe
-          o dia a dia do Thiago no Instagram.
-        </p>
+        <span aria-hidden="true" className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-[12px] border border-aco text-ouro">
+          <Quote size={22} strokeWidth={1.6} />
+        </span>
+        <div>
+          <p className="font-wide text-[1.3rem] font-semibold leading-snug text-branco">Avaliações de clientes no Google</p>
+          <p className="mt-2 max-w-xl leading-relaxed text-nevoa">
+            Veja o que dizem os clientes atendidos pelo Thiago. Se você já comprou com ele, deixe também a sua avaliação.
+          </p>
+          <a
+            href={LINKS.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => track('instagram_click', { location: 'testimonials' })}
+            className="mt-4 inline-flex items-center gap-2 text-[0.92rem] text-cimento transition-colors hover:text-ouro-claro"
+          >
+            <InstagramIcon size={16} /> Entregas e novidades em @{CONTACT.instagram}
+          </a>
+        </div>
       </div>
-      </div>
-      <div className="shrink-0">
+      <div className="flex shrink-0 flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
         <ButtonLink
-          href={LINKS.instagram}
-          variant="secondary"
-          icon={<InstagramIcon size={18} />}
-          onClick={() => track('instagram_click', { location: 'testimonials' })}
+          href={LINKS.googleReviews}
+          icon={<Star size={18} aria-hidden="true" />}
+          onClick={() => track('google_reviews_click', { action: 'view' })}
         >
-          @{CONTACT.instagram}
+          Ver avaliações no Google
+        </ButtonLink>
+        <ButtonLink
+          href={LINKS.googleReviewWrite}
+          variant="secondary"
+          icon={<Quote size={18} aria-hidden="true" />}
+          onClick={() => track('google_reviews_click', { action: 'write' })}
+        >
+          Avaliar meu atendimento
         </ButtonLink>
       </div>
     </div>

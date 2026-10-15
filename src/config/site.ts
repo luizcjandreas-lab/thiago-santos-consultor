@@ -159,6 +159,8 @@ export const PARTNER_STORE = {
 /* -------------------------------------------------------------------------- */
 /*
    Campos entre colchetes ainda não foram informados e ficam ocultos no site.
+   "hours" é o texto exibido (use \n para quebrar linha); "openingHours" é o
+   mesmo horário no formato do Google (Mo-Fr 09:00-18:00), usado nos dados estruturados.
    Enquanto "name" estiver em branco, o card mostra "Unidade 1", "Unidade 2"...
    O botão "Como chegar" usa uma busca do Google Maps pelo endereço; se quiser,
    troque pelo link exato da loja no Google Maps.
@@ -171,7 +173,8 @@ export const STORES: Store[] = [
     id: 'loja-1',
     name: '[NOME DA LOJA 1]',
     address: 'Rua Joaquim Marques Lisboa, 135 – Vila de Vecci, Jundiaí – SP',
-    hours: '[HORÁRIO]',
+    hours: 'Segunda a sexta: 9h às 18h\nSábado: 9h às 13h\nDomingo: fechado',
+    openingHours: ['Mo-Fr 09:00-18:00', 'Sa 09:00-13:00'],
     phone: '[TELEFONE]',
     mapsUrl: mapsSearch('Rua Joaquim Marques Lisboa, 135, Jundiaí - SP'),
     instagram: '[INSTAGRAM]',
@@ -187,7 +190,8 @@ export const STORES: Store[] = [
     id: 'loja-2',
     name: '[NOME DA LOJA 2]',
     address: 'Avenida Fernando Arens, 1566 – Vila Progresso, Jundiaí – SP',
-    hours: '[HORÁRIO]',
+    hours: 'Segunda a sexta: 9h às 18h\nSábado: 9h às 13h\nDomingo: fechado',
+    openingHours: ['Mo-Fr 09:00-18:00', 'Sa 09:00-13:00'],
     phone: '[TELEFONE]',
     mapsUrl: mapsSearch('Avenida Fernando Arens, 1566, Jundiaí - SP'),
     instagram: '[INSTAGRAM]',
@@ -203,7 +207,8 @@ export const STORES: Store[] = [
     id: 'loja-3',
     name: '[NOME DA LOJA 3]',
     address: 'Avenida Fernando Arens, 1556 – Vila Progresso, Jundiaí – SP',
-    hours: '[HORÁRIO]',
+    hours: 'Segunda a sexta: 9h às 18h\nSábado: 9h às 13h\nDomingo: fechado',
+    openingHours: ['Mo-Fr 09:00-18:00', 'Sa 09:00-13:00'],
     phone: '[TELEFONE]',
     mapsUrl: mapsSearch('Avenida Fernando Arens, 1556, Jundiaí - SP'),
     instagram: '[INSTAGRAM]',
@@ -378,6 +383,10 @@ export const NAV_ITEMS = [
 
 export const LINKS = {
   instagram: `https://www.instagram.com/${CONTACT.instagram}/`,
+  /** Perfil no Google, onde ficam as avaliações dos clientes */
+  googleReviews: 'https://g.page/r/CTdiiMQcGJ5-EAE',
+  /** Link para o cliente deixar uma avaliação no Google */
+  googleReviewWrite: 'https://g.page/r/CTdiiMQcGJ5-EAE/review',
 };
 
 /** Avisos legais exibidos no rodapé e nos detalhes do veículo */

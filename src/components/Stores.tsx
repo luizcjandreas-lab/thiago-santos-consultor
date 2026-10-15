@@ -143,7 +143,7 @@ function InfoRow({
       <dt className="mt-0.5 shrink-0 text-ouro" aria-label={label}>
         <span aria-hidden="true">{icon}</span>
       </dt>
-      <dd className="min-w-0 break-words leading-snug text-nevoa">{render ? render(value) : value}</dd>
+      <dd className="min-w-0 whitespace-pre-line break-words leading-snug text-nevoa">{render ? render(value) : value}</dd>
     </div>
   );
 }

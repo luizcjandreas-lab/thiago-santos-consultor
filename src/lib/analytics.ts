@@ -20,6 +20,7 @@ export type TrackEvent =
   | 'store_directions'
   | 'store_schedule'
   | 'instagram_click'
+  | 'google_reviews_click'
   | 'nav_click';
 
 type Params = Record<string, string | number | boolean | undefined>;

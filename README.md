@@ -29,15 +29,15 @@ mostra o campo como pendente e desativa botões que dependem dele (por exemplo, 
 
 ### Pendências
 
-- [ ] Nome, horário, telefone, Instagram e tipos de veículos de cada unidade (`STORES`). Endereços já preenchidos.
+- [ ] Nome, telefone, Instagram e tipos de veículos de cada unidade (`STORES`). Endereços e horários já preenchidos.
       Campos não informados ficam ocultos no site.
 - [ ] E-mail de contato (`CONTACT.email`)
 - [ ] Logomarca da loja (`PARTNER_STORE.logo`) — enquanto vazia, aparece só o nome em texto
 - [ ] Veículos em `estoque.ts` (a lista está vazia; a vitrine mostra "Estoque em atualização")
-- [ ] Depoimentos reais e autorizados (`TESTIMONIALS.items`)
+- [ ] Depoimentos em texto no carrossel (`TESTIMONIALS.items`), se quiser destacar alguns. As avaliações do Google já estão linkadas (`LINKS.googleReviews`).
 - [ ] IDs de rastreamento no `.env` (opcional) e domínio próprio, se houver
 
-Já preenchidos: WhatsApp **(11) 97812-7789**, Instagram **@thiagoconsultorfimavel** e os endereços das 3 unidades em Jundiaí.
+Já preenchidos: WhatsApp **(11) 97812-7789**, Instagram **@thiagoconsultorfimavel**, endereços e horários das 3 unidades em Jundiaí e o link das avaliações no Google.
 
 ## Cadastrar veículos
 
