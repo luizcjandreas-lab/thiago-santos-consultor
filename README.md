@@ -29,21 +29,20 @@ mostra o campo como pendente e desativa botões que dependem dele (por exemplo, 
 
 ### Pendências
 
-- [ ] Nome, endereço, horário, telefone, link do Google Maps, Instagram e tipos de veículos das 3 unidades (`STORES`)
-- [ ] Confirmar se cada vídeo de fachada (`media/loja-1.mp4`, `loja-2`, `loja-3`) corresponde à unidade certa
+- [ ] Nome, horário, telefone, Instagram e tipos de veículos de cada unidade (`STORES`). Endereços já preenchidos.
+      Campos não informados ficam ocultos no site.
 - [ ] E-mail de contato (`CONTACT.email`)
 - [ ] Logomarca da loja (`PARTNER_STORE.logo`) — enquanto vazia, aparece só o nome em texto
-- [ ] Estoque real em `estoque.ts` (os 9 veículos atuais são exemplos, marcados como "Exemplo")
+- [ ] Veículos em `estoque.ts` (a lista está vazia; a vitrine mostra "Estoque em atualização")
 - [ ] Depoimentos reais e autorizados (`TESTIMONIALS.items`)
-- [ ] Endereço final do site e IDs de rastreamento no `.env` (veja abaixo)
-- [ ] Trocar `SEU-DOMINIO.com.br` em `public/sitemap.xml` e `public/robots.txt`
+- [ ] IDs de rastreamento no `.env` (opcional) e domínio próprio, se houver
 
-Já preenchidos a partir da logomarca: WhatsApp **(11) 97812-7789** e Instagram **@thiagoconsultorfimavel**.
+Já preenchidos: WhatsApp **(11) 97812-7789**, Instagram **@thiagoconsultorfimavel** e os endereços das 3 unidades em Jundiaí.
 
 ## Cadastrar veículos
 
 1. Coloque as fotos em `public/estoque/<id-do-veiculo>/` (ex.: `1.webp`, `2.webp`). Fotos na horizontal (4:3), até 1600 px de largura.
-2. Em `src/config/estoque.ts`, substitua os itens de exemplo e remova `demo: true`.
+2. Em `src/config/estoque.ts`, copie o modelo do comentário no topo do arquivo para dentro de `VEHICLES`.
 3. Preencha `images: ['estoque/<id>/1.webp', 'estoque/<id>/2.webp']`. A primeira é a foto do card.
 4. `status`: `'disponivel'`, `'reservado'` ou `'vendido'`. Vendidos ficam no fim da lista com a tarja "Vendido".
 5. `price: null` mostra "Consulte".

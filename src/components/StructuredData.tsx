@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { CONTACT, LINKS, PARTNER_STORE, PROFILE, SEO, SERVICES, STORES, WHATSAPP_NUMBER } from '../config/site';
-import { isFilled } from '../lib/utils';
+import { isFilled, storeLabel } from '../lib/utils';
 
 /**
  * Dados estruturados (schema.org) gerados a partir de src/config/site.ts.
@@ -12,7 +12,7 @@ export function StructuredData() {
     const url = SEO.siteUrl ? `${SEO.siteUrl}/` : undefined;
     const image = SEO.siteUrl ? `${SEO.siteUrl}/${SEO.ogImage}` : undefined;
     const phone = isFilled(WHATSAPP_NUMBER) ? `+${WHATSAPP_NUMBER}` : undefined;
-    const filledStores = STORES.filter((s) => isFilled(s.name) && isFilled(s.address));
+    const filledStores = STORES.filter((s) => isFilled(s.address));
 
     const graph: Record<string, unknown>[] = [
       {
@@ -50,7 +50,7 @@ export function StructuredData() {
         department: filledStores.length
           ? filledStores.map((s) => ({
               '@type': 'AutoDealer',
-              name: s.name,
+              name: isFilled(s.name) ? s.name : `${PARTNER_STORE.name} — ${storeLabel(s)}`,
               address: s.address,
               telephone: isFilled(s.phone) ? s.phone : undefined,
               openingHours: isFilled(s.hours) ? s.hours : undefined,

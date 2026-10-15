@@ -158,19 +158,22 @@ export const PARTNER_STORE = {
 /* Unidades                                                                   */
 /* -------------------------------------------------------------------------- */
 /*
-   Os vídeos de fachada enviados foram distribuídos em ordem (loja-1, loja-2,
-   loja-3). Confirme se cada vídeo corresponde à unidade correta e troque o
-   caminho se necessário.
+   Campos entre colchetes ainda não foram informados e ficam ocultos no site.
+   Enquanto "name" estiver em branco, o card mostra "Unidade 1", "Unidade 2"...
+   O botão "Como chegar" usa uma busca do Google Maps pelo endereço; se quiser,
+   troque pelo link exato da loja no Google Maps.
 */
+
+const mapsSearch = (query: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 
 export const STORES: Store[] = [
   {
     id: 'loja-1',
     name: '[NOME DA LOJA 1]',
-    address: '[ENDEREÇO]',
+    address: 'Rua Joaquim Marques Lisboa, 135 – Vila de Vecci, Jundiaí – SP',
     hours: '[HORÁRIO]',
     phone: '[TELEFONE]',
-    mapsUrl: '[LINK DO MAPA]',
+    mapsUrl: mapsSearch('Rua Joaquim Marques Lisboa, 135, Jundiaí - SP'),
     instagram: '[INSTAGRAM]',
     vehicleTypes: '[TIPOS DE VEÍCULOS]',
     facade: {
@@ -183,33 +186,33 @@ export const STORES: Store[] = [
   {
     id: 'loja-2',
     name: '[NOME DA LOJA 2]',
-    address: '[ENDEREÇO]',
+    address: 'Avenida Fernando Arens, 1566 – Vila Progresso, Jundiaí – SP',
     hours: '[HORÁRIO]',
     phone: '[TELEFONE]',
-    mapsUrl: '[LINK DO MAPA]',
+    mapsUrl: mapsSearch('Avenida Fernando Arens, 1566, Jundiaí - SP'),
     instagram: '[INSTAGRAM]',
     vehicleTypes: '[TIPOS DE VEÍCULOS]',
     facade: {
       video: 'media/loja-2.mp4',
       poster: 'media/loja-2-poster.webp',
-      position: '50% 70%',
-      alt: 'Fachada da unidade 2, com vitrine de vidro e faixa amarela na rua',
+      position: '50% 55%',
+      alt: 'Fachada da unidade 2, com picape exposta atrás do portão',
     },
   },
   {
     id: 'loja-3',
     name: '[NOME DA LOJA 3]',
-    address: '[ENDEREÇO]',
+    address: 'Avenida Fernando Arens, 1556 – Vila Progresso, Jundiaí – SP',
     hours: '[HORÁRIO]',
     phone: '[TELEFONE]',
-    mapsUrl: '[LINK DO MAPA]',
+    mapsUrl: mapsSearch('Avenida Fernando Arens, 1556, Jundiaí - SP'),
     instagram: '[INSTAGRAM]',
     vehicleTypes: '[TIPOS DE VEÍCULOS]',
     facade: {
       video: 'media/loja-3.mp4',
       poster: 'media/loja-3-poster.webp',
-      position: '50% 55%',
-      alt: 'Fachada da unidade 3, com picape exposta atrás do portão',
+      position: '50% 70%',
+      alt: 'Fachada da unidade 3, com vitrine de vidro e faixa amarela na rua',
     },
   },
 ];

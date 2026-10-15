@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { STORES } from '../config/site';
 import type { Store } from '../config/types';
 import { track } from '../lib/analytics';
-import { asset, cx, isFilled, storeLabel } from '../lib/utils';
+import { asset, isFilled, storeLabel } from '../lib/utils';
 import { messages, whatsappUrl } from '../lib/whatsapp';
 import { AutoVideo } from './ui/AutoVideo';
 import { ButtonLink, PendingButton } from './ui/Button';
@@ -63,14 +63,16 @@ function StoreCard({ store, index }: { store: Store; index: number }) {
             <span className="text-[0.85rem]">Foto da fachada em breve</span>
           </div>
         )}
-        <span className="absolute left-3 top-3 rounded-full bg-black/60 px-2.5 py-1 text-[0.75rem] text-nevoa backdrop-blur-sm">
-          Unidade {index + 1}
-        </span>
+        {isFilled(store.name) && (
+          <span className="absolute left-3 top-3 rounded-full bg-black/60 px-2.5 py-1 text-[0.75rem] text-nevoa backdrop-blur-sm">
+            Unidade {index + 1}
+          </span>
+        )}
       </div>
 
       <div className="flex flex-1 flex-col gap-5 p-6">
-        <h3 id={titleId} className={cx('font-wide text-[1.25rem] font-bold leading-snug', isFilled(store.name) ? 'text-branco' : 'pending')}>
-          {store.name}
+        <h3 id={titleId} className="font-wide text-[1.25rem] font-bold leading-snug text-branco">
+          {storeLabel(store)}
         </h3>
         <dl className="flex flex-col gap-3 text-[0.93rem]">
           <InfoRow icon={<MapPin size={17} strokeWidth={1.7} />} label="Endereço" value={store.address} />
@@ -134,15 +136,14 @@ function InfoRow({
   value: string;
   render?: (value: string) => ReactNode;
 }) {
-  const filled = isFilled(value);
+  // Campos ainda não informados em site.ts ficam ocultos
+  if (!isFilled(value)) return null;
   return (
     <div className="flex gap-3">
       <dt className="mt-0.5 shrink-0 text-ouro" aria-label={label}>
         <span aria-hidden="true">{icon}</span>
       </dt>
-      <dd className={cx('min-w-0 break-words leading-snug', filled ? 'text-nevoa' : 'pending')}>
-        {filled && render ? render(value) : value}
-      </dd>
+      <dd className="min-w-0 break-words leading-snug text-nevoa">{render ? render(value) : value}</dd>
     </div>
   );
 }

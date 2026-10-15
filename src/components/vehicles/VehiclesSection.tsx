@@ -1,9 +1,10 @@
-import { Info, RotateCcw, Search, SlidersHorizontal } from 'lucide-react';
+import { CarFront, Info, MessageCircle, RotateCcw, Search, SlidersHorizontal } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { VEHICLES } from '../../config/estoque';
 import type { Vehicle } from '../../config/types';
 import { track } from '../../lib/analytics';
 import { cx } from '../../lib/utils';
+import { whatsappUrl } from '../../lib/whatsapp';
 import { Button, ButtonLink } from '../ui/Button';
 import { SelectInput } from '../ui/Field';
 import { SectionHeader } from '../ui/SectionHeader';
@@ -62,6 +63,10 @@ export function VehiclesSection() {
           </p>
         )}
 
+        {VEHICLES.length === 0 ? (
+          <EmptyStock />
+        ) : (
+          <>
         {/* Filtros */}
         <div className={cx('rounded-[14px] border border-aco bg-grafite', hasDemo ? 'mt-5' : 'mt-10')}>
           <div className="flex items-center justify-between gap-3 px-4 py-3 lg:hidden">
@@ -165,9 +170,43 @@ export function VehiclesSection() {
             </div>
           </div>
         )}
+          </>
+        )}
       </div>
 
       <VehicleDetails open={detailsOpen} vehicle={selected} onClose={() => setDetailsOpen(false)} />
     </section>
+  );
+}
+
+/** Exibido enquanto não houver veículos cadastrados em src/config/estoque.ts */
+function EmptyStock() {
+  return (
+    <div className="mt-10 grid gap-8 rounded-[16px] border border-aco bg-grafite p-7 sm:p-10 lg:grid-cols-12 lg:items-center lg:gap-10">
+      <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:gap-6 lg:col-span-8">
+        <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-[12px] border border-aco text-ouro">
+          <CarFront size={24} strokeWidth={1.6} aria-hidden="true" />
+        </span>
+        <div>
+          <p className="font-wide text-[1.35rem] font-bold leading-snug text-branco">Estoque em atualização</p>
+          <p className="mt-2 max-w-xl leading-relaxed text-nevoa">
+            Os veículos disponíveis estão sendo cadastrados no site. Enquanto isso, chame o Thiago para saber o que tem nas lojas
+            hoje ou peça uma busca pelo modelo que você procura.
+          </p>
+        </div>
+      </div>
+      <div className="flex flex-col gap-3 sm:flex-row lg:col-span-4 lg:flex-col lg:items-stretch">
+        <ButtonLink
+          href={whatsappUrl('Olá, Thiago! Vim pelo seu site e gostaria de saber quais veículos estão disponíveis hoje.')}
+          icon={<MessageCircle size={18} strokeWidth={2} aria-hidden="true" />}
+          onClick={() => track('whatsapp_click', { location: 'empty_stock' })}
+        >
+          Consultar estoque
+        </ButtonLink>
+        <ButtonLink href="#busca" variant="secondary">
+          Pedir uma busca personalizada
+        </ButtonLink>
+      </div>
+    </div>
   );
 }
