@@ -12,6 +12,7 @@ import { ANALYTICS } from '../config/site';
 
 export type TrackEvent =
   | 'whatsapp_click'
+  | 'catalog_click'
   | 'vehicle_details_open'
   | 'vehicle_interest'
   | 'vehicle_filter'
@@ -28,6 +29,7 @@ type Params = Record<string, string | number | boolean | undefined>;
 /** Mapeamento para eventos padrão do Meta Pixel */
 const PIXEL_EVENTS: Partial<Record<TrackEvent, string>> = {
   whatsapp_click: 'Contact',
+  catalog_click: 'ViewContent',
   vehicle_interest: 'Contact',
   store_schedule: 'Schedule',
   vehicle_details_open: 'ViewContent',

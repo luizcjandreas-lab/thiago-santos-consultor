@@ -383,6 +383,8 @@ export const NAV_ITEMS = [
 
 export const LINKS = {
   instagram: `https://www.instagram.com/${CONTACT.instagram}/`,
+  /** Catálogo de veículos do Thiago no WhatsApp */
+  whatsappCatalog: `https://wa.me/c/${WHATSAPP_NUMBER}`,
   /** Perfil no Google, onde ficam as avaliações dos clientes */
   googleReviews: 'https://g.page/r/CTdiiMQcGJ5-EAE',
   /** Link para o cliente deixar uma avaliação no Google */

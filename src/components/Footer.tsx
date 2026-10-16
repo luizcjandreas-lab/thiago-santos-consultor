@@ -1,4 +1,4 @@
-import { MessageCircle } from 'lucide-react';
+import { LayoutGrid, MessageCircle } from 'lucide-react';
 import { BRAND, CONTACT, LEGAL, LINKS, PARTNER_STORE, PROFILE, STORES } from '../config/site';
 import { track } from '../lib/analytics';
 import { asset, cx, isFilled, storeLabel } from '../lib/utils';
@@ -55,6 +55,18 @@ export function Footer() {
               >
                 <MessageCircle size={17} strokeWidth={1.8} aria-hidden="true" className="text-ouro" />
                 WhatsApp {CONTACT.whatsappDisplay}
+              </a>
+            </li>
+            <li>
+              <a
+                href={LINKS.whatsappCatalog}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => track('catalog_click', { location: 'footer' })}
+                className="inline-flex items-center gap-2.5 text-nevoa transition-colors hover:text-ouro-claro"
+              >
+                <LayoutGrid size={17} strokeWidth={1.8} aria-hidden="true" className="text-ouro" />
+                Catálogo no WhatsApp
               </a>
             </li>
             <li>

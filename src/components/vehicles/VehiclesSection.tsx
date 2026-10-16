@@ -1,6 +1,7 @@
-import { CarFront, MessageCircle, RotateCcw, Search, SlidersHorizontal } from 'lucide-react';
+import { CarFront, LayoutGrid, MessageCircle, RotateCcw, Search, SlidersHorizontal } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { STOCK } from '../../config/estoque';
+import { LINKS } from '../../config/site';
 import type { Vehicle } from '../../config/types';
 import { track } from '../../lib/analytics';
 import { cx } from '../../lib/utils';
@@ -164,6 +165,8 @@ export function VehiclesSection() {
             </div>
           </div>
         )}
+
+        <CatalogBar />
           </>
         )}
       </div>
@@ -197,10 +200,40 @@ function EmptyStock() {
         >
           Consultar estoque
         </ButtonLink>
-        <ButtonLink href="#busca" variant="secondary">
-          Pedir uma busca personalizada
+        <ButtonLink
+          href={LINKS.whatsappCatalog}
+          variant="secondary"
+          icon={<LayoutGrid size={18} strokeWidth={1.8} aria-hidden="true" />}
+          onClick={() => track('catalog_click', { location: 'empty_stock' })}
+        >
+          Ver catálogo no WhatsApp
         </ButtonLink>
       </div>
+    </div>
+  );
+}
+
+/** Chamada para o catálogo completo do Thiago no WhatsApp, logo abaixo dos veículos */
+function CatalogBar() {
+  return (
+    <div className="mt-8 flex flex-col gap-5 rounded-[14px] border border-aco bg-grafite p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+      <div className="flex items-start gap-4">
+        <span aria-hidden="true" className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[10px] border border-aco text-ouro">
+          <LayoutGrid size={21} strokeWidth={1.6} />
+        </span>
+        <div>
+          <p className="font-wide text-[1.08rem] font-semibold leading-snug text-branco">Quer ver mais opções?</p>
+          <p className="mt-1 text-[0.93rem] leading-relaxed text-nevoa">Confira o catálogo completo do Thiago no WhatsApp.</p>
+        </div>
+      </div>
+      <ButtonLink
+        href={LINKS.whatsappCatalog}
+        className="shrink-0 max-sm:w-full"
+        icon={<LayoutGrid size={18} strokeWidth={1.8} aria-hidden="true" />}
+        onClick={() => track('catalog_click', { location: 'vehicles' })}
+      >
+        Ver catálogo no WhatsApp
+      </ButtonLink>
     </div>
   );
 }
