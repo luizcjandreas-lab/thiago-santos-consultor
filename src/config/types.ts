@@ -9,8 +9,6 @@ export type Fuel = 'Flex' | 'Gasolina' | 'Diesel' | 'Híbrido' | 'Elétrico';
 export interface Vehicle {
   /** Identificador único, sem espaços. Ex.: "polo-highline-2023" */
   id: string;
-  /** true = veículo de demonstração (aparece com a etiqueta "Exemplo"). */
-  demo?: boolean;
   /** true = rascunho: fica salvo no arquivo, mas não aparece no site */
   hidden?: boolean;
   brand: string;

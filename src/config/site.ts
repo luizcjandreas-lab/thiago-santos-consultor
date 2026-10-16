@@ -389,6 +389,27 @@ export const LINKS = {
   googleReviewWrite: 'https://g.page/r/CTdiiMQcGJ5-EAE/review',
 };
 
+/* ==========================================================================
+   FAIXA DE CONDIÇÕES (aparece acima da vitrine de veículos)
+   Para tirar do site, troque "enabled: true" por "enabled: false".
+   ========================================================================== */
+export const PROMO = {
+  enabled: true,
+  label: 'Condições do momento',
+  title: 'Primeiro pagamento só em dezembro',
+  text: 'Mais de 150 veículos em estoque. Se o modelo que você procura não estiver aqui, peça ao Thiago.',
+  items: [
+    'Financiamento em até 60x',
+    'Entrada em até 12x sem juros no cartão de crédito',
+    'Seu carro de menor ou maior valor como entrada',
+    'Trabalhamos com todas as financeiras',
+    'Carros a pronta entrega',
+  ],
+  /** Texto pequeno no rodapé da faixa */
+  footnote: 'Financiamento sujeito à análise e aprovação de crédito.',
+  whatsappMessage: 'Olá, Thiago! Vim pelo seu site e gostaria de saber mais sobre as condições de pagamento.',
+};
+
 /** Avisos legais exibidos no rodapé e nos detalhes do veículo */
 export const LEGAL = {
   priceNotice: 'Preços, disponibilidade e condições podem sofrer alterações sem aviso prévio.',

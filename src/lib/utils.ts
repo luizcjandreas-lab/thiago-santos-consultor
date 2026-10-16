@@ -50,8 +50,7 @@ export function findStore(id?: string): Store | undefined {
 }
 
 /** Nome da unidade para exibição (mostra "Unidade 1" enquanto o nome não foi preenchido) */
-export function storeLabel(store: Store | undefined): string {
-  if (!store) return 'Unidade a confirmar';
+export function storeLabel(store: Store): string {
   if (isFilled(store.name)) return store.name;
   const index = STORES.indexOf(store);
   return `Unidade ${index + 1}`;

@@ -62,26 +62,3 @@ export function Button({
     </button>
   );
 }
-
-/** Botão desativado para ações que dependem de um dado ainda não preenchido */
-export function PendingButton({
-  variant = 'secondary',
-  size,
-  icon,
-  children,
-  reason,
-  className,
-}: CommonProps & { reason: string; className?: string }) {
-  return (
-    <span
-      role="link"
-      aria-disabled="true"
-      title={reason}
-      className={buttonClass(variant, size, cx('cursor-not-allowed opacity-45 hover:border-aco-claro hover:text-branco', className))}
-    >
-      {icon}
-      <span>{children}</span>
-      <span className="sr-only">({reason})</span>
-    </span>
-  );
-}

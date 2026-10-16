@@ -43,18 +43,12 @@ export function VehicleCard({ vehicle: v, onOpen }: Props) {
           <VehiclePlaceholder
             bodyType={v.bodyType}
             color={v.color}
-            caption={sold ? undefined : v.demo ? 'Imagem ilustrativa' : 'Fotos em breve'}
             className={sold ? 'opacity-60' : undefined}
           />
         )}
         <div className="absolute left-3 top-3 flex flex-wrap gap-2">
           <StatusBadge status={v.status} />
         </div>
-        {v.demo && (
-          <span className="absolute right-3 top-3 rounded-full border border-ouro/40 bg-asfalto/80 px-2.5 py-1 text-[0.72rem] font-medium text-ouro-claro">
-            Exemplo
-          </span>
-        )}
         {v.images.length > 1 && !sold && (
           <span className="absolute bottom-3 right-3 rounded-full bg-black/60 px-2.5 py-1 text-[0.72rem] text-nevoa">
             {v.images.length} fotos

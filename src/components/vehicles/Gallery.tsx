@@ -27,11 +27,7 @@ export function Gallery({ vehicle: v }: { vehicle: Vehicle }) {
   if (!total) {
     return (
       <div className="relative aspect-[4/3] overflow-hidden rounded-[12px] border border-aco">
-        <VehiclePlaceholder
-          bodyType={v.bodyType}
-          color={v.color}
-          caption={v.demo ? 'Imagem ilustrativa — veículo de demonstração' : 'As fotos deste veículo serão publicadas em breve'}
-        />
+        <VehiclePlaceholder bodyType={v.bodyType} color={v.color} />
         {sold && <SoldBand />}
       </div>
     );

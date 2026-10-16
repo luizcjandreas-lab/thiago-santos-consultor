@@ -1,10 +1,10 @@
-import { Info, MapPin, MessageCircle, Navigation } from 'lucide-react';
+import { MapPin, MessageCircle, Navigation } from 'lucide-react';
 import { LEGAL } from '../../config/site';
 import type { Vehicle } from '../../config/types';
 import { track } from '../../lib/analytics';
 import { cx, findStore, formatKm, formatPrice, formatYear, isFilled, storeLabel } from '../../lib/utils';
 import { messages, whatsappUrl } from '../../lib/whatsapp';
-import { ButtonLink, PendingButton } from '../ui/Button';
+import { ButtonLink } from '../ui/Button';
 import { Dialog, DialogClose } from '../ui/Dialog';
 import { Gallery } from './Gallery';
 import { StatusBadge } from './StatusBadge';
@@ -48,7 +48,6 @@ function DetailsContent({ v, onClose }: { v: Vehicle; onClose: () => void }) {
       >
         <div className="flex min-w-0 items-center gap-3">
           <StatusBadge status={v.status} />
-          {v.demo && <span className="truncate text-[0.82rem] text-ouro-claro">Veículo de demonstração</span>}
         </div>
         <DialogClose onClose={onClose} label="Fechar detalhes do veículo" />
       </div>
@@ -80,14 +79,6 @@ function DetailsContent({ v, onClose }: { v: Vehicle; onClose: () => void }) {
                 {sold ? 'Vendido' : formatPrice(v.price)}
               </p>
             </header>
-
-            {v.demo && (
-              <p className="flex gap-3 rounded-[12px] border border-ouro/30 bg-ouro/5 p-4 text-[0.88rem] leading-relaxed text-nevoa">
-                <Info size={18} strokeWidth={1.8} aria-hidden="true" className="mt-0.5 shrink-0 text-ouro" />
-                Este é um exemplo para demonstrar a página e não faz parte do estoque. Fale com o Thiago para saber os veículos
-                disponíveis hoje.
-              </p>
-            )}
 
             <section aria-labelledby="det-ficha">
               <h3 id="det-ficha" className="font-wide text-[1.05rem] font-semibold text-branco">
@@ -137,8 +128,8 @@ function DetailsContent({ v, onClose }: { v: Vehicle; onClose: () => void }) {
               </h3>
               <p className="mt-2 text-[0.95rem] text-branco">{storeLabel(store)}</p>
               {isFilled(store.address) && <p className="mt-1 text-[0.9rem] text-nevoa">{store.address}</p>}
-              <div className="mt-4">
-                {isFilled(store.mapsUrl) ? (
+              {isFilled(store.mapsUrl) && (
+                <div className="mt-4">
                   <ButtonLink
                     href={store.mapsUrl}
                     variant="secondary"
@@ -148,12 +139,8 @@ function DetailsContent({ v, onClose }: { v: Vehicle; onClose: () => void }) {
                   >
                     Como chegar
                   </ButtonLink>
-                ) : (
-                  <PendingButton size="sm" reason="Link do mapa ainda não cadastrado" icon={<Navigation size={16} aria-hidden="true" />}>
-                    Como chegar
-                  </PendingButton>
-                )}
-              </div>
+                </div>
+              )}
             </section>
             )}
 

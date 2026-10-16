@@ -6,7 +6,7 @@ import { track } from '../lib/analytics';
 import { asset, isFilled, storeLabel } from '../lib/utils';
 import { messages, whatsappUrl } from '../lib/whatsapp';
 import { AutoVideo } from './ui/AutoVideo';
-import { ButtonLink, PendingButton } from './ui/Button';
+import { ButtonLink } from './ui/Button';
 import { InstagramIcon } from './ui/Icons';
 import { SectionHeader } from './ui/SectionHeader';
 
@@ -60,7 +60,6 @@ function StoreCard({ store, index }: { store: Store; index: number }) {
         ) : (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-cimento">
             <MapPin size={26} strokeWidth={1.5} aria-hidden="true" />
-            <span className="text-[0.85rem]">Foto da fachada em breve</span>
           </div>
         )}
         {isFilled(store.name) && (
@@ -97,7 +96,7 @@ function StoreCard({ store, index }: { store: Store; index: number }) {
           />
         </dl>
         <div className="mt-auto grid grid-cols-1 gap-2.5 pt-2 sm:grid-cols-2 lg:grid-cols-1">
-          {isFilled(store.mapsUrl) ? (
+          {isFilled(store.mapsUrl) && (
             <ButtonLink
               href={store.mapsUrl}
               variant="secondary"
@@ -106,10 +105,6 @@ function StoreCard({ store, index }: { store: Store; index: number }) {
             >
               Como chegar
             </ButtonLink>
-          ) : (
-            <PendingButton reason="Link do mapa ainda não cadastrado" icon={<Navigation size={17} aria-hidden="true" />}>
-              Como chegar
-            </PendingButton>
           )}
           <ButtonLink
             href={whatsappUrl(messages.store(store))}

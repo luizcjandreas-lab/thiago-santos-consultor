@@ -47,7 +47,6 @@ Já preenchidos: WhatsApp **(11) 97812-7789**, Instagram **@thiagoconsultorfimav
 4. `status`: `'disponivel'`, `'reservado'` ou `'vendido'`. Vendidos ficam no fim da lista com a tarja "Vendido".
 5. `price: null` mostra "Consulte".
 
-Quando nenhum veículo tiver `demo: true`, o aviso de "vitrine em demonstração" some sozinho.
 Sem fotos, o card mostra uma ilustração da carroceria (`bodyType`) na cor informada.
 
 ## WhatsApp

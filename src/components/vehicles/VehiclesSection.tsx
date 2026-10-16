@@ -1,4 +1,4 @@
-import { CarFront, Info, MessageCircle, RotateCcw, Search, SlidersHorizontal } from 'lucide-react';
+import { CarFront, MessageCircle, RotateCcw, Search, SlidersHorizontal } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { STOCK } from '../../config/estoque';
 import type { Vehicle } from '../../config/types';
@@ -8,6 +8,7 @@ import { whatsappUrl } from '../../lib/whatsapp';
 import { Button, ButtonLink } from '../ui/Button';
 import { SelectInput } from '../ui/Field';
 import { SectionHeader } from '../ui/SectionHeader';
+import { PromoStrip } from '../PromoStrip';
 import { EMPTY_FILTERS, FILTER_FIELDS, SORT_OPTIONS, applyFilters, filterOptions, type Filters, type SortKey } from './filters';
 import { VehicleCard } from './VehicleCard';
 import { VehicleDetails } from './VehicleDetails';
@@ -22,8 +23,10 @@ export function VehiclesSection() {
   const options = useMemo(() => filterOptions(STOCK, filters), [filters]);
   const results = useMemo(() => applyFilters(STOCK, filters, sort), [filters, sort]);
   const activeCount = Object.values(filters).filter(Boolean).length;
-  const hasDemo = STOCK.some((v) => v.demo);
   const availableCount = results.filter((v) => v.status === 'disponivel').length;
+  // Filtro de loja e ordenação por km só aparecem quando os veículos têm esses dados
+  const fields = FILTER_FIELDS.filter((f) => f.key !== 'store' || STOCK.some((v) => v.storeId));
+  const sortOptions = SORT_OPTIONS.filter((o) => o.value !== 'menor-km' || STOCK.some((v) => v.km != null));
 
   const update = (key: keyof Filters, value: string) => {
     setFilters((prev) => {
@@ -52,23 +55,14 @@ export function VehiclesSection() {
           description="Confira algumas das opções disponíveis e fale diretamente com o Thiago para consultar condições, disponibilidade e possibilidades de negociação."
         />
 
-        {hasDemo && (
-          <p className="mt-10 flex gap-3 rounded-[12px] border border-aco bg-grafite px-4 py-3.5 text-[0.9rem] leading-relaxed text-nevoa sm:items-center">
-            <Info size={18} strokeWidth={1.8} aria-hidden="true" className="mt-0.5 shrink-0 text-ouro sm:mt-0" />
-            <span>
-              <strong className="font-semibold text-branco">Vitrine em demonstração.</strong> Os veículos marcados como “Exemplo”
-              mostram como a página funciona e não fazem parte do estoque. Para saber o que está disponível hoje, fale com o
-              Thiago.
-            </span>
-          </p>
-        )}
+        <PromoStrip />
 
         {STOCK.length === 0 ? (
           <EmptyStock />
         ) : (
           <>
         {/* Filtros */}
-        <div className={cx('rounded-[14px] border border-aco bg-grafite', hasDemo ? 'mt-5' : 'mt-10')}>
+        <div className="mt-6 rounded-[14px] border border-aco bg-grafite">
           <div className="flex items-center justify-between gap-3 px-4 py-3 lg:hidden">
             <button
               type="button"
@@ -94,7 +88,7 @@ export function VehiclesSection() {
 
           <div id="painel-filtros" className={cx('border-t border-aco p-4 sm:p-5 lg:block lg:border-t-0', panelOpen ? 'block' : 'hidden')}>
             <div className="grid grid-cols-2 gap-x-3 gap-y-4 md:grid-cols-4 lg:gap-x-4">
-              {FILTER_FIELDS.map(({ key, label, all }) => (
+              {fields.map(({ key, label, all }) => (
                 <div key={key} className="flex min-w-0 flex-col gap-1.5">
                   <label htmlFor={`filtro-${key}`} className="text-[0.8rem] text-cimento">
                     {label}
@@ -138,7 +132,7 @@ export function VehiclesSection() {
               Ordenar por
             </label>
             <SelectInput id="ordenar" value={sort} onChange={(e) => setSort(e.target.value as SortKey)} className="min-h-10 py-1.5 text-[0.9rem]">
-              {SORT_OPTIONS.map((o) => (
+              {sortOptions.map((o) => (
                 <option key={o.value} value={o.value}>
                   {o.label}
                 </option>
@@ -188,10 +182,10 @@ function EmptyStock() {
           <CarFront size={24} strokeWidth={1.6} aria-hidden="true" />
         </span>
         <div>
-          <p className="font-wide text-[1.35rem] font-bold leading-snug text-branco">Estoque em atualização</p>
+          <p className="font-wide text-[1.35rem] font-bold leading-snug text-branco">Consulte o estoque do dia</p>
           <p className="mt-2 max-w-xl leading-relaxed text-nevoa">
-            Os veículos disponíveis estão sendo cadastrados no site. Enquanto isso, chame o Thiago para saber o que tem nas lojas
-            hoje ou peça uma busca pelo modelo que você procura.
+            Chame o Thiago para saber quais veículos estão disponíveis hoje nas lojas ou peça uma busca pelo modelo que você
+            procura.
           </p>
         </div>
       </div>
