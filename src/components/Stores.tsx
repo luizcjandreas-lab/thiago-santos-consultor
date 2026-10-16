@@ -40,7 +40,8 @@ function StoreCard({ store, index }: { store: Store; index: number }) {
       aria-labelledby={titleId}
       className="flex w-full min-w-0 flex-col overflow-hidden rounded-[16px] border border-aco bg-grafite sm:flex-row lg:flex-col"
     >
-      <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-chumbo sm:aspect-auto sm:min-h-[19rem] sm:w-[42%] lg:aspect-[4/3] lg:min-h-0 lg:w-full">
+      {/* Vídeos verticais (9:16) exibidos no enquadramento original, sem cortes */}
+      <div className="relative aspect-[9/16] w-full shrink-0 overflow-hidden bg-chumbo sm:w-[16rem] md:w-[18rem] lg:w-full">
         {media.video ? (
           <AutoVideo
             src={media.video}
