@@ -172,18 +172,18 @@ export const STORES: Store[] = [
   {
     id: 'loja-1',
     name: '[NOME DA LOJA 1]',
-    address: 'Rua Joaquim Marques Lisboa, 135 – Vila de Vecci, Jundiaí – SP',
+    address: 'Rua Joaquim Marques Lisboa, 135 – Vila de Vecchi, Jundiaí – SP, 13202-170',
     hours: 'Segunda a sexta: 9h às 18h\nSábado: 9h às 13h\nDomingo: fechado',
     openingHours: ['Mo-Fr 09:00-18:00', 'Sa 09:00-13:00'],
     phone: '[TELEFONE]',
-    mapsUrl: mapsSearch('Rua Joaquim Marques Lisboa, 135, Jundiaí - SP'),
+    mapsUrl: mapsSearch('Rua Joaquim Marques Lisboa, 135 - Vila de Vecchi, Jundiaí - SP, 13202-170'),
     instagram: '[INSTAGRAM]',
     vehicleTypes: '[TIPOS DE VEÍCULOS]',
     facade: {
       video: 'media/loja-1.mp4',
       poster: 'media/loja-1-poster.webp',
-      position: '50% 62%',
-      alt: 'Fachada da unidade 1, com veículos expostos sob a cobertura',
+      position: '50% 55%',
+      alt: 'Vídeo da unidade 1: fachada, veículos expostos sob a cobertura e área de atendimento',
     },
   },
   {
@@ -199,8 +199,8 @@ export const STORES: Store[] = [
     facade: {
       video: 'media/loja-2.mp4',
       poster: 'media/loja-2-poster.webp',
-      position: '50% 55%',
-      alt: 'Fachada da unidade 2, com picape exposta atrás do portão',
+      position: '50% 45%',
+      alt: 'Vídeo da unidade 2: fachada, pátio coberto com veículos e recepção',
     },
   },
   {
@@ -216,8 +216,8 @@ export const STORES: Store[] = [
     facade: {
       video: 'media/loja-3.mp4',
       poster: 'media/loja-3-poster.webp',
-      position: '50% 70%',
-      alt: 'Fachada da unidade 3, com vitrine de vidro e faixa amarela na rua',
+      position: '50% 55%',
+      alt: 'Vídeo da unidade 3: fachada de vidro e showroom com veículos',
     },
   },
 ];

@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { STORES } from '../config/site';
 import type { Store } from '../config/types';
 import { track } from '../lib/analytics';
-import { asset, isFilled, storeLabel } from '../lib/utils';
+import { asset, displayAddress, isFilled, storeLabel } from '../lib/utils';
 import { messages, whatsappUrl } from '../lib/whatsapp';
 import { AutoVideo } from './ui/AutoVideo';
 import { ButtonLink } from './ui/Button';
@@ -74,7 +74,7 @@ function StoreCard({ store, index }: { store: Store; index: number }) {
           {storeLabel(store)}
         </h3>
         <dl className="flex flex-col gap-3 text-[0.93rem]">
-          <InfoRow icon={<MapPin size={17} strokeWidth={1.7} />} label="Endereço" value={store.address} />
+          <InfoRow icon={<MapPin size={17} strokeWidth={1.7} />} label="Endereço" value={store.address} render={displayAddress} />
           <InfoRow icon={<Clock size={17} strokeWidth={1.7} />} label="Horário" value={store.hours} />
           <InfoRow icon={<Phone size={17} strokeWidth={1.7} />} label="Telefone" value={store.phone} />
           <InfoRow icon={<Car size={17} strokeWidth={1.7} />} label="Veículos" value={store.vehicleTypes} />

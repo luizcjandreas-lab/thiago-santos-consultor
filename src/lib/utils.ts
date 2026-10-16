@@ -56,6 +56,9 @@ export function storeLabel(store: Store): string {
   return `Unidade ${index + 1}`;
 }
 
+/** Endereço para exibição: impede que o CEP quebre de linha no hífen */
+export const displayAddress = (address: string) => address.replace(/(\d{5})-(\d{3})/g, '$1\u2060-\u2060$2');
+
 /** Máscara de telefone brasileiro: (11) 91234-5678 */
 export function maskPhone(value: string): string {
   const d = value.replace(/\D/g, '').slice(0, 11);

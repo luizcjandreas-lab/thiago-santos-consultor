@@ -1,7 +1,7 @@
 import { LayoutGrid, MessageCircle } from 'lucide-react';
 import { BRAND, CONTACT, LEGAL, LINKS, PARTNER_STORE, PROFILE, STORES } from '../config/site';
 import { track } from '../lib/analytics';
-import { asset, cx, isFilled, storeLabel } from '../lib/utils';
+import { asset, cx, displayAddress, isFilled, storeLabel } from '../lib/utils';
 import { whatsappUrl } from '../lib/whatsapp';
 import { navItems } from './Header';
 import { InstagramIcon } from './ui/Icons';
@@ -96,7 +96,7 @@ export function Footer() {
             {STORES.map((s) => (
               <li key={s.id}>
                 <p className="text-nevoa">{storeLabel(s)}</p>
-                <p className={cx('mt-0.5', isFilled(s.address) ? 'text-cimento' : 'pending')}>{s.address}</p>
+                <p className={cx('mt-0.5', isFilled(s.address) ? 'text-cimento' : 'pending')}>{displayAddress(s.address)}</p>
               </li>
             ))}
           </ul>

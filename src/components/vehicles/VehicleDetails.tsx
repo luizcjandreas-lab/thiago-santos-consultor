@@ -2,7 +2,7 @@ import { MapPin, MessageCircle, Navigation } from 'lucide-react';
 import { LEGAL } from '../../config/site';
 import type { Vehicle } from '../../config/types';
 import { track } from '../../lib/analytics';
-import { cx, findStore, formatKm, formatPrice, formatYear, isFilled, storeLabel } from '../../lib/utils';
+import { cx, displayAddress, findStore, formatKm, formatPrice, formatYear, isFilled, storeLabel } from '../../lib/utils';
 import { messages, whatsappUrl } from '../../lib/whatsapp';
 import { ButtonLink } from '../ui/Button';
 import { Dialog, DialogClose } from '../ui/Dialog';
@@ -127,7 +127,7 @@ function DetailsContent({ v, onClose }: { v: Vehicle; onClose: () => void }) {
                 Onde o veículo está
               </h3>
               <p className="mt-2 text-[0.95rem] text-branco">{storeLabel(store)}</p>
-              {isFilled(store.address) && <p className="mt-1 text-[0.9rem] text-nevoa">{store.address}</p>}
+              {isFilled(store.address) && <p className="mt-1 text-[0.9rem] text-nevoa">{displayAddress(store.address)}</p>}
               {isFilled(store.mapsUrl) && (
                 <div className="mt-4">
                   <ButtonLink
