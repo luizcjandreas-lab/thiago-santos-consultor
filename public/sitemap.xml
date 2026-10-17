@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Ao usar um domínio próprio, troque o endereço abaixo. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://thiago-santos-consultor.vercel.app/</loc>
+    <loc>https://consultorthiagosantos.com.br/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>

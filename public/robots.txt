@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Depois de publicar, troque pelo endereço final do site:
-Sitemap: https://thiago-santos-consultor.vercel.app/sitemap.xml
+Sitemap: https://consultorthiagosantos.com.br/sitemap.xml

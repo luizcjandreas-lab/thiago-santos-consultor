@@ -35,7 +35,8 @@ mostra o campo como pendente e desativa botões que dependem dele (por exemplo, 
 - [ ] Logomarca da loja (`PARTNER_STORE.logo`) — enquanto vazia, aparece só o nome em texto
 - [ ] Veículos em `estoque.ts` (a lista está vazia; a vitrine mostra "Estoque em atualização")
 - [ ] Depoimentos em texto no carrossel (`TESTIMONIALS.items`), se quiser destacar alguns. As avaliações do Google já estão linkadas (`LINKS.googleReviews`).
-- [ ] IDs de rastreamento no `.env` (opcional) e domínio próprio, se houver
+- [ ] IDs de rastreamento no `.env` (opcional)
+- [x] Domínio próprio: consultorthiagosantos.com.br (DNS na GoDaddy apontando para a Vercel)
 
 Já preenchidos: WhatsApp **(11) 97812-7789**, Instagram **@thiagoconsultorfimavel**, endereços e horários das 3 unidades em Jundiaí e o link das avaliações no Google.
 
